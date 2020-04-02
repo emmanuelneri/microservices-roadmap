@@ -1,6 +1,6 @@
 # blueprint-microservices
 
-![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/roadmap.gv.pdf)
+![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/roadmap.gv.png)
 
 ### Run project
 Python 2.7+
