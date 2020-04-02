@@ -1,0 +1,60 @@
+// Microservices Roadmap
+digraph {
+	microservices [label=Microservices]
+	application [label=Application]
+	microservices -> application
+	db [label=Database]
+	application -> db
+	stack [label=Stack]
+	application -> stack
+	linguagens [label=Linguagens]
+	framework [label=Frameworks]
+	lib [label=Libs]
+	stack -> linguagens
+	stack -> framework
+	stack -> lib
+	sql [label=SQL]
+	nosql [label=NoSQL]
+	cache [label=Cache]
+	db -> sql
+	db -> nosql
+	db -> cache
+	application -> comunication
+	comunication [label=Comunication]
+	synchronous [label=Synchronous]
+	asynchronous [label=Asynchronous]
+	comunication -> synchronous
+	comunication -> asynchronous
+	rest [label=Rest]
+	graphql [label=GraphQL]
+	grpc [label=gRPC]
+	synchronous -> rest
+	synchronous -> graphql
+	synchronous -> grpc
+	queue [label=Queue]
+	"pub-sub" [label="Publish-Subscribe"]
+	asynchronous -> queue
+	asynchronous -> "pub-sub"
+	infrastructure [label=Infrastructure]
+	microservices -> infrastructure
+	provider [label=Provider]
+	gateway [label=Gateway]
+	"service-discovery" [label="Service Discovery"]
+	configuration [label=Configurations]
+	infrastructure -> provider
+	infrastructure -> gateway
+	infrastructure -> "service-discovery"
+	infrastructure -> configuration
+	observability [label=Observability]
+	microservices -> observability
+	log [label=Logs]
+	metrics [label=Metrics]
+	observability -> log
+	observability -> metrics
+	process [label=Process]
+	microservices -> process
+	"continuous-integration" [label=CI]
+	"continuous-delivery" [label=CD]
+	process -> "continuous-integration"
+	process -> "continuous-delivery"
+}
