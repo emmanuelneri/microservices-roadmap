@@ -19,38 +19,75 @@ digraph {
 	db -> sql
 	db -> nosql
 	db -> cache
+	application -> monitoring
+	monitoring [label=Monitoring]
+	"health-check" [label="Health Check"]
+	"app-metrics" [label=Metrics]
+	monitoring -> "health-check"
+	monitoring -> "app-metrics"
 	application -> comunication
 	comunication [label=Comunication]
 	synchronous [label=Synchronous]
 	asynchronous [label=Asynchronous]
 	comunication -> synchronous
 	comunication -> asynchronous
+	grpc [label=gRPC]
+	http [label=HTTP]
+	synchronous -> http
+	synchronous -> grpc
 	rest [label=Rest]
 	graphql [label=GraphQL]
-	grpc [label=gRPC]
-	synchronous -> rest
-	synchronous -> graphql
-	synchronous -> grpc
+	http -> rest
+	http -> graphql
 	queue [label=Queue]
 	"pub-sub" [label="Publish-Subscribe"]
 	asynchronous -> queue
 	asynchronous -> "pub-sub"
+	"queue-transaction" [label="Message Transaction"]
+	queue -> "queue-transaction"
+	idempotent [label="Idempotent Consumer"]
+	deduplicate [label="Deduplicate-message"]
+	"pub-sub" -> idempotent
+	"pub-sub" -> deduplicate
+	application -> "fault-tolerance"
+	"fault-tolerance" [label="Fault Tolerance"]
+	"app-circuit-breaker" [label="Circuit Breaker"]
+	dlq [label="Dead Letter Queues"]
+	"fault-tolerance" -> "app-circuit-breaker"
+	"fault-tolerance" -> dlq
 	infrastructure [label=Infrastructure]
 	microservices -> infrastructure
-	provider [label=Provider]
+	"application-environment" [label="Application Environment"]
 	gateway [label=Gateway]
 	"service-discovery" [label="Service Discovery"]
 	configuration [label=Configurations]
-	infrastructure -> provider
+	infrastructure -> "application-environment"
 	infrastructure -> gateway
 	infrastructure -> "service-discovery"
 	infrastructure -> configuration
+	infrastructure -> "auto-scaling"
+	container [label=container]
+	"cloud-instance" [label="Cloud Instance"]
+	"on-premise" [label=OnPremise]
+	serveless [label=Serverless]
+	"application-environment" -> container
+	"application-environment" -> "cloud-instance"
+	"application-environment" -> "on-premise"
+	"application-environment" -> serveless
+	environment [label=Environments]
+	secrets [label=Secrets]
+	configuration -> environment
+	configuration -> secrets
+	orchestration [label=orchestration]
+	container -> orchestration
 	observability [label=Observability]
 	microservices -> observability
 	log [label=Logs]
 	metrics [label=Metrics]
+	tracing [label=Tracing]
 	observability -> log
 	observability -> metrics
+	observability -> tracing
 	process [label=Process]
 	microservices -> process
 	"continuous-integration" [label=CI]
