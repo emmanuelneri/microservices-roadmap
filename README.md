@@ -1,4 +1,4 @@
-# blueprint-microservices
+# microservices-roadmap
 
 ![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/roadmap.gv.png)
 
