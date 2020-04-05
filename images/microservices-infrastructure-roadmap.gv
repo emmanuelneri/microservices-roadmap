@@ -1,0 +1,26 @@
+// Microservices Infrastructure Roadmap
+digraph {
+	infrastructure [label=Infrastructure]
+	infrastructure -> "application-environment"
+	infrastructure -> gateway
+	infrastructure -> "service-discovery"
+	infrastructure -> configuration
+	infrastructure -> "auto-scaling"
+	"application-environment" [label="Application Environment"]
+	gateway [label=Gateway]
+	"service-discovery" [label="Service Discovery"]
+	configuration [label=Configurations]
+	container [label=container]
+	"cloud-instance" [label="Cloud Instance"]
+	"on-premise" [label=OnPremise]
+	serveless [label=Serverless]
+	"application-environment" -> container
+	"application-environment" -> "cloud-instance"
+	"application-environment" -> "on-premise"
+	"application-environment" -> serveless
+	container -> orchestration
+	environment [label=Environments]
+	secrets [label=Secrets]
+	configuration -> environment
+	configuration -> secrets
+}

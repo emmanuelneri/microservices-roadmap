@@ -1,0 +1,10 @@
+// Microservices Observability Roadmap
+digraph {
+	observability [label=Observability]
+	observability -> log
+	observability -> metrics
+	observability -> tracing
+	log [label=Logs]
+	metrics [label=Metrics]
+	tracing [label=Tracing]
+}
