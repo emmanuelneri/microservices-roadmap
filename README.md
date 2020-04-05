@@ -1,28 +1,28 @@
 Microservices Roadmap
 -----------
 
-![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/roadmap.gv.png)
+![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/roadmap.gv.png?style=centerme)
 
 #### Microservices
 
-![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/microservices-roadmap.gv.png)
+![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/microservices-roadmap.gv.png?style=centerme)
 
 #### Application
 
-![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/microservices-application-roadmap.gv.png)
+![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/microservices-application-roadmap.gv.png?style=centerme)
 
 #### Infrastructure
 
-![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/microservices-infrastructure-roadmap.gv.png)
+![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/microservices-infrastructure-roadmap.gv.png?style=centerme)
 
 
 #### Observability
 
-![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/microservices-observability-roadmap.gv.png)
+![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/microservices-observability-roadmap.gv.png?style=centerme)
 
 #### Process
 
-![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/microservices-process-roadmap.gv.png)
+![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/microservices-process-roadmap.gv.png?style=centerme)
 
 
 ### Run project

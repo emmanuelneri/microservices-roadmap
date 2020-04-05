@@ -1,0 +1,8 @@
+// Microservices Roadmap
+digraph {
+	microservices [label=Microservices]
+	microservices -> application
+	microservices -> infrastructure
+	microservices -> observability
+	microservices -> process
+}
