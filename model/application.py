@@ -60,8 +60,10 @@ class Application:
 
         dot.node('idempotent', 'Idempotent Consumer')
         dot.node('deduplicate', 'Deduplicate-message')
+        dot.node('eventual-consistency', 'eventual consistency')
         dot.edge('pub-sub', 'idempotent')
         dot.edge('pub-sub', 'deduplicate')
+        dot.edge('pub-sub', 'eventual-consistency')
 
         dot.edge('application', 'fault-tolerance')
         dot.node('fault-tolerance', 'Fault Tolerance')

@@ -1,15 +1,19 @@
 // Microservices Infrastructure Roadmap
 digraph {
 	infrastructure [label=Infrastructure]
+	"application-environment" [label="Application Environment"]
+	gateway [label=Gateway]
+	"load-balance" [label="Load Balance"]
+	"service-discovery" [label="Service Discovery"]
+	configuration [label=Configurations]
 	infrastructure -> "application-environment"
 	infrastructure -> gateway
+	infrastructure -> "load-balance"
 	infrastructure -> "service-discovery"
 	infrastructure -> configuration
 	infrastructure -> "auto-scaling"
-	"application-environment" [label="Application Environment"]
-	gateway [label=Gateway]
-	"service-discovery" [label="Service Discovery"]
-	configuration [label=Configurations]
+	gateway -> "load-balance"
+	"load-balance" -> "service-discovery"
 	container [label=container]
 	"cloud-instance" [label="Cloud Instance"]
 	"on-premise" [label=OnPremise]

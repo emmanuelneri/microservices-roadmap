@@ -45,8 +45,10 @@ digraph {
 	queue -> "queue-transaction"
 	idempotent [label="Idempotent Consumer"]
 	deduplicate [label="Deduplicate-message"]
+	"eventual-consistency" [label="eventual consistency"]
 	"pub-sub" -> idempotent
 	"pub-sub" -> deduplicate
+	"pub-sub" -> "eventual-consistency"
 	application -> "fault-tolerance"
 	"fault-tolerance" [label="Fault Tolerance"]
 	"app-circuit-breaker" [label="Circuit Breaker"]
