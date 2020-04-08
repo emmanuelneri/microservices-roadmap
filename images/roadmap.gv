@@ -6,17 +6,12 @@ digraph {
 	microservices -> observability
 	microservices -> process
 	application [label=Application]
-	application -> db
 	application -> stack
+	application -> db
+	application -> "data-management"
 	application -> monitoring
 	application -> comunication
-	db [label=Database]
-	sql [label=SQL]
-	nosql [label=NoSQL]
-	cache [label=Cache]
-	db -> sql
-	db -> nosql
-	db -> cache
+	application -> consistency
 	stack [label=Stack]
 	linguagens [label=Linguagens]
 	framework [label=Frameworks]
@@ -24,6 +19,18 @@ digraph {
 	stack -> linguagens
 	stack -> framework
 	stack -> lib
+	db [label=Database]
+	sql [label=SQL]
+	nosql [label=NoSQL]
+	cache [label=Cache]
+	db -> sql
+	db -> nosql
+	db -> cache
+	"data-management" [label=Datamanagement]
+	cqrs [label=CQRS]
+	"event-sourcing" [label="Event Sourcing"]
+	"data-management" -> cqrs
+	"data-management" -> "event-sourcing"
 	monitoring [label=Monitoring]
 	"health-check" [label="Health Check"]
 	"app-metrics" [label=Metrics]
@@ -50,16 +57,23 @@ digraph {
 	queue -> "queue-transaction"
 	idempotent [label="Idempotent Consumer"]
 	deduplicate [label="Deduplicate-message"]
-	"eventual-consistency" [label="eventual consistency"]
+	"tolerant-reader" [label="tolerant-reader"]
 	"pub-sub" -> idempotent
 	"pub-sub" -> deduplicate
-	"pub-sub" -> "eventual-consistency"
+	"pub-sub" -> "tolerant-reader"
 	application -> "fault-tolerance"
 	"fault-tolerance" [label="Fault Tolerance"]
 	"app-circuit-breaker" [label="Circuit Breaker"]
 	dlq [label="Dead Letter Queues"]
+	retry [label=Retry]
+	consistency [label=Consistency]
+	"eventual-consistency" [label="eventual consistency"]
+	saga [label=SAGA]
+	consistency -> "eventual-consistency"
+	consistency -> saga
 	"fault-tolerance" -> "app-circuit-breaker"
 	"fault-tolerance" -> dlq
+	"fault-tolerance" -> retry
 	infrastructure [label=Infrastructure]
 	"application-environment" [label="Application Environment"]
 	gateway [label=Gateway]
@@ -97,4 +111,10 @@ digraph {
 	process [label=Process]
 	process -> "continuous-integration"
 	process -> "continuous-delivery"
+	process -> deploy
+	deploy [label=deploy]
+	"blue-green-deployment" [label="Blue/Green Deployment"]
+	"canary-release" [label="Canary release"]
+	deploy -> "blue-green-deployment"
+	deploy -> "canary-release"
 }

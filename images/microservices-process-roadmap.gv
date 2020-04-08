@@ -3,4 +3,10 @@ digraph {
 	process [label=Process]
 	process -> "continuous-integration"
 	process -> "continuous-delivery"
+	process -> deploy
+	deploy [label=deploy]
+	"blue-green-deployment" [label="Blue/Green Deployment"]
+	"canary-release" [label="Canary release"]
+	deploy -> "blue-green-deployment"
+	deploy -> "canary-release"
 }
