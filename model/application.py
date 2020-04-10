@@ -66,11 +66,11 @@ class Application:
         dot.node('pub-sub', 'Publish-Subscribe')
         dot.edge('asynchronous', 'queue')
         dot.edge('asynchronous', 'pub-sub')
+        dot.edge('asynchronous', 'messages')
 
         dot.node('queue-transaction', 'Message Transaction')
         dot.edge('queue', 'queue-transaction')
 
-        dot.node('tolerant-reader', 'tolerant-reader')
         dot.node('at-most-once-delivery', 'At Most Once Delivery')
         dot.node('at-least-once-delivery', 'At Least Once Delivery')
         dot.node('exactly-once-delivery', 'Exactly Once Delivery')
@@ -78,7 +78,6 @@ class Application:
         dot.edge('pub-sub', 'at-most-once-delivery')
         dot.edge('pub-sub', 'at-least-once-delivery')
         dot.edge('pub-sub', 'exactly-once-delivery')
-        dot.edge('pub-sub', 'tolerant-reader')
 
         dot.node('deduplicate', 'Deduplicate-message')
         dot.node('idempotent', 'Idempotent Consumer')
@@ -86,6 +85,15 @@ class Application:
         dot.edge('at-most-once-delivery', 'idempotent')
         dot.edge('at-least-once-delivery', 'idempotent')
         dot.edge('exactly-once-delivery', 'deduplicate')
+
+        dot.node('messages', 'Message')
+        dot.node('tolerant-reader', 'tolerant-reader')
+        dot.node('schema', 'Schema')
+        dot.node('message-format', 'Format')
+
+        dot.edge('messages', 'tolerant-reader')
+        dot.edge('messages', 'schema')
+        dot.edge('messages', 'message-format')
 
         dot.edge('application', 'fault-tolerance')
         dot.node('fault-tolerance', 'Fault Tolerance')

@@ -50,21 +50,27 @@ digraph {
 	"pub-sub" [label="Publish-Subscribe"]
 	asynchronous -> queue
 	asynchronous -> "pub-sub"
+	asynchronous -> messages
 	"queue-transaction" [label="Message Transaction"]
 	queue -> "queue-transaction"
-	"tolerant-reader" [label="tolerant-reader"]
 	"at-most-once-delivery" [label="At Most Once Delivery"]
 	"at-least-once-delivery" [label="At Least Once Delivery"]
 	"exactly-once-delivery" [label="Exactly Once Delivery"]
 	"pub-sub" -> "at-most-once-delivery"
 	"pub-sub" -> "at-least-once-delivery"
 	"pub-sub" -> "exactly-once-delivery"
-	"pub-sub" -> "tolerant-reader"
 	deduplicate [label="Deduplicate-message"]
 	idempotent [label="Idempotent Consumer"]
 	"at-most-once-delivery" -> idempotent
 	"at-least-once-delivery" -> idempotent
 	"exactly-once-delivery" -> deduplicate
+	messages [label=Message]
+	"tolerant-reader" [label="tolerant-reader"]
+	schema [label=Schema]
+	"message-format" [label=Format]
+	messages -> "tolerant-reader"
+	messages -> schema
+	messages -> "message-format"
 	application -> "fault-tolerance"
 	"fault-tolerance" [label="Fault Tolerance"]
 	dlq [label="Dead Letter Queues"]
