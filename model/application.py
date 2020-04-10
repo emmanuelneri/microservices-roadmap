@@ -18,8 +18,9 @@ class Application:
         dot.node('framework', 'Frameworks')
         dot.node('lib', 'Libs')
         dot.edge('stack', 'linguagens')
-        dot.edge('stack', 'framework')
-        dot.edge('stack', 'lib')
+       
+        dot.edge('linguagens', 'framework')
+        dot.edge('linguagens', 'lib')
 
         dot.node('db', 'Database')
         dot.node('sql', 'SQL')
@@ -29,7 +30,7 @@ class Application:
         dot.edge('db', 'nosql')
         dot.edge('db', 'cache')
 
-        dot.node('data-management', 'Datamanagement')
+        dot.node('data-management', 'Data Management')
         dot.node('cqrs', 'CQRS')
         dot.node('event-sourcing', 'Event Sourcing')
         dot.edge('data-management', 'cqrs')
@@ -58,6 +59,9 @@ class Application:
         dot.edge('http', 'rest')
         dot.edge('http', 'graphql')
 
+        dot.node('versioning', 'Versioning')
+        dot.edge('rest', 'versioning')
+
         dot.node('queue', 'Queue')
         dot.node('pub-sub', 'Publish-Subscribe')
         dot.edge('asynchronous', 'queue')
@@ -66,18 +70,29 @@ class Application:
         dot.node('queue-transaction', 'Message Transaction')
         dot.edge('queue', 'queue-transaction')
 
-        dot.node('idempotent', 'Idempotent Consumer')
-        dot.node('deduplicate', 'Deduplicate-message')
         dot.node('tolerant-reader', 'tolerant-reader')
-        dot.edge('pub-sub', 'idempotent')
-        dot.edge('pub-sub', 'deduplicate')
+        dot.node('at-most-once-delivery', 'At Most Once Delivery')
+        dot.node('at-least-once-delivery', 'At Least Once Delivery')
+        dot.node('exactly-once-delivery', 'Exactly Once Delivery')
+
+        dot.edge('pub-sub', 'at-most-once-delivery')
+        dot.edge('pub-sub', 'at-least-once-delivery')
+        dot.edge('pub-sub', 'exactly-once-delivery')
         dot.edge('pub-sub', 'tolerant-reader')
+
+        dot.node('deduplicate', 'Deduplicate-message')
+        dot.node('idempotent', 'Idempotent Consumer')
+
+        dot.edge('at-most-once-delivery', 'idempotent')
+        dot.edge('at-least-once-delivery', 'idempotent')
+        dot.edge('exactly-once-delivery', 'deduplicate')
 
         dot.edge('application', 'fault-tolerance')
         dot.node('fault-tolerance', 'Fault Tolerance')
-        dot.node('app-circuit-breaker', 'Circuit Breaker')
         dot.node('dlq', 'Dead Letter Queues')
         dot.node('retry', 'Retry')
+        dot.node('app-circuit-breaker', 'Circuit Breaker')
+        dot.node('fallback', 'Fallback')
 
         dot.node('consistency', 'Consistency')
         dot.node('eventual-consistency', 'eventual consistency')
@@ -85,7 +100,9 @@ class Application:
         dot.edge('consistency', 'eventual-consistency')
         dot.edge('consistency', 'saga')
 
-        dot.edge('fault-tolerance', 'app-circuit-breaker')
         dot.edge('fault-tolerance', 'dlq') 
         dot.edge('fault-tolerance', 'retry') 
-    
+        dot.edge('fault-tolerance', 'app-circuit-breaker')
+        dot.edge('fault-tolerance', 'fallback') 
+        dot.edge('app-circuit-breaker', 'fallback')
+

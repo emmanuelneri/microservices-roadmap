@@ -17,8 +17,8 @@ digraph {
 	framework [label=Frameworks]
 	lib [label=Libs]
 	stack -> linguagens
-	stack -> framework
-	stack -> lib
+	linguagens -> framework
+	linguagens -> lib
 	db [label=Database]
 	sql [label=SQL]
 	nosql [label=NoSQL]
@@ -26,7 +26,7 @@ digraph {
 	db -> sql
 	db -> nosql
 	db -> cache
-	"data-management" [label=Datamanagement]
+	"data-management" [label="Data Management"]
 	cqrs [label=CQRS]
 	"event-sourcing" [label="Event Sourcing"]
 	"data-management" -> cqrs
@@ -49,31 +49,43 @@ digraph {
 	graphql [label=GraphQL]
 	http -> rest
 	http -> graphql
+	versioning [label=Versioning]
+	rest -> versioning
 	queue [label=Queue]
 	"pub-sub" [label="Publish-Subscribe"]
 	asynchronous -> queue
 	asynchronous -> "pub-sub"
 	"queue-transaction" [label="Message Transaction"]
 	queue -> "queue-transaction"
-	idempotent [label="Idempotent Consumer"]
-	deduplicate [label="Deduplicate-message"]
 	"tolerant-reader" [label="tolerant-reader"]
-	"pub-sub" -> idempotent
-	"pub-sub" -> deduplicate
+	"at-most-once-delivery" [label="At Most Once Delivery"]
+	"at-least-once-delivery" [label="At Least Once Delivery"]
+	"exactly-once-delivery" [label="Exactly Once Delivery"]
+	"pub-sub" -> "at-most-once-delivery"
+	"pub-sub" -> "at-least-once-delivery"
+	"pub-sub" -> "exactly-once-delivery"
 	"pub-sub" -> "tolerant-reader"
+	deduplicate [label="Deduplicate-message"]
+	idempotent [label="Idempotent Consumer"]
+	"at-most-once-delivery" -> idempotent
+	"at-least-once-delivery" -> idempotent
+	"exactly-once-delivery" -> deduplicate
 	application -> "fault-tolerance"
 	"fault-tolerance" [label="Fault Tolerance"]
-	"app-circuit-breaker" [label="Circuit Breaker"]
 	dlq [label="Dead Letter Queues"]
 	retry [label=Retry]
+	"app-circuit-breaker" [label="Circuit Breaker"]
+	fallback [label=Fallback]
 	consistency [label=Consistency]
 	"eventual-consistency" [label="eventual consistency"]
 	saga [label=SAGA]
 	consistency -> "eventual-consistency"
 	consistency -> saga
-	"fault-tolerance" -> "app-circuit-breaker"
 	"fault-tolerance" -> dlq
 	"fault-tolerance" -> retry
+	"fault-tolerance" -> "app-circuit-breaker"
+	"fault-tolerance" -> fallback
+	"app-circuit-breaker" -> fallback
 	infrastructure [label=Infrastructure]
 	"application-environment" [label="Application Environment"]
 	gateway [label=Gateway]
