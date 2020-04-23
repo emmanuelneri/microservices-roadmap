@@ -23,12 +23,28 @@ class Application:
         dot.edge('linguagens', 'lib')
 
         dot.node('db', 'Database')
-        dot.node('sql', 'SQL')
-        dot.node('nosql', 'NoSQL')
-        dot.node('cache', 'Cache')
-        dot.edge('db', 'sql')
+
+        dot.edge('db', 'relational')
         dot.edge('db', 'nosql')
-        dot.edge('db', 'cache')
+
+
+        dot.node('nosql', 'NoSQL')
+        dot.node('key-value', 'Key-Value')
+        dot.node('columnar', 'Columnar')
+        dot.node('document', 'Document')
+        dot.node('graph', 'Graph')
+
+        dot.edge('nosql', 'key-value')
+        dot.edge('nosql', 'columnar')
+        dot.edge('nosql', 'document')
+        dot.edge('nosql', 'graph')
+
+        dot.node('relational', 'Relational')
+        dot.node('sql', 'SQL')
+        dot.node('acid', 'ACID')
+    
+        dot.edge('relational', 'sql')
+        dot.edge('relational', 'acid')
 
         dot.node('data-management', 'Data Management')
         dot.node('cqrs', 'CQRS')
@@ -60,7 +76,9 @@ class Application:
         dot.edge('http', 'graphql')
 
         dot.node('versioning', 'Versioning')
+        dot.node('open-api', 'OpenAPI')
         dot.edge('rest', 'versioning')
+        dot.edge('rest', 'open-api')
 
         dot.node('queue', 'Queue')
         dot.node('pub-sub', 'Publish-Subscribe')

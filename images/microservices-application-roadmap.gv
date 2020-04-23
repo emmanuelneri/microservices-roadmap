@@ -15,12 +15,22 @@ digraph {
 	linguagens -> framework
 	linguagens -> lib
 	db [label=Database]
-	sql [label=SQL]
-	nosql [label=NoSQL]
-	cache [label=Cache]
-	db -> sql
+	db -> relational
 	db -> nosql
-	db -> cache
+	nosql [label=NoSQL]
+	"key-value" [label="Key-Value"]
+	columnar [label=Columnar]
+	document [label=Document]
+	"graph" [label="Graph"]
+	nosql -> "key-value"
+	nosql -> columnar
+	nosql -> document
+	nosql -> "graph"
+	relational [label=Relational]
+	sql [label=SQL]
+	acid [label=ACID]
+	relational -> sql
+	relational -> acid
 	"data-management" [label="Data Management"]
 	cqrs [label=CQRS]
 	"event-sourcing" [label="Event Sourcing"]
@@ -45,7 +55,9 @@ digraph {
 	http -> rest
 	http -> graphql
 	versioning [label=Versioning]
+	"open-api" [label=OpenAPI]
 	rest -> versioning
+	rest -> "open-api"
 	queue [label=Queue]
 	"pub-sub" [label="Publish-Subscribe"]
 	asynchronous -> queue
