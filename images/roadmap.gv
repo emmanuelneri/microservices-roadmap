@@ -69,7 +69,11 @@ digraph {
 	asynchronous -> "pub-sub"
 	asynchronous -> messages
 	"queue-transaction" [label="Message Transaction"]
+	"worker-queue" [label="Worker Queue"]
+	"command-queue" [label="Command Queue"]
 	queue -> "queue-transaction"
+	queue -> "worker-queue"
+	queue -> "command-queue"
 	"at-most-once-delivery" [label="At Most Once Delivery"]
 	"at-least-once-delivery" [label="At Least Once Delivery"]
 	"exactly-once-delivery" [label="Exactly Once Delivery"]

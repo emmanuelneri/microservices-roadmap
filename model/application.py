@@ -87,7 +87,12 @@ class Application:
         dot.edge('asynchronous', 'messages')
 
         dot.node('queue-transaction', 'Message Transaction')
+        dot.node('worker-queue', 'Worker Queue')
+        dot.node('command-queue', 'Command Queue')
+
         dot.edge('queue', 'queue-transaction')
+        dot.edge('queue', 'worker-queue')
+        dot.edge('queue', 'command-queue')
 
         dot.node('at-most-once-delivery', 'At Most Once Delivery')
         dot.node('at-least-once-delivery', 'At Least Once Delivery')
