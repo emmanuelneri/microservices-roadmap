@@ -5,4 +5,5 @@ digraph {
 	microservices -> infrastructure
 	microservices -> observability
 	microservices -> process
+	microservices -> test
 }

@@ -24,6 +24,9 @@ Microservices Roadmap
 
 ![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/microservices-process-roadmap.gv.png?style=centerme)
 
+#### Test
+
+![alt tag](https://github.com/emmanuelneri/microservices-roadmap/blob/master/images/microservices-test-roadmap.gv.png?style=centerme)
 
 ### Run project
 Python 2.7+

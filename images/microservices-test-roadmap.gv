@@ -1,0 +1,10 @@
+// Microservices Test Roadmap
+digraph {
+	test [label=Test]
+	test -> "component-test"
+	test -> "contract-test"
+	test -> "end-to-end-test"
+	"component-test" [label="Component Test"]
+	"contract-test" [label="Contract Test"]
+	"end-to-end-test" [label="end-to-end Test"]
+}

@@ -10,4 +10,5 @@ class Microservices:
         dot.edge('microservices', 'infrastructure')
         dot.edge('microservices', 'observability')
         dot.edge('microservices', 'process')
+        dot.edge('microservices', 'test')
     

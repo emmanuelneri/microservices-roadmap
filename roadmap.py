@@ -4,6 +4,7 @@ from model.process import Process
 from model.application import Application
 from model.infrastructure import Infrastructure
 from model.observability import Observability
+from model.test import Test
 
 
 dot = Digraph(comment='Microservices Roadmap', format='png')
@@ -22,5 +23,8 @@ observability.build(dot)
 
 process = Process()
 process.build(dot)
+
+test = Test()
+test.build(dot)
 
 dot.render('images/roadmap.gv', view=True)  

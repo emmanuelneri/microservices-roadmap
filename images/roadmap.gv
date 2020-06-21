@@ -5,6 +5,7 @@ digraph {
 	microservices -> infrastructure
 	microservices -> observability
 	microservices -> process
+	microservices -> test
 	application [label=Application]
 	application -> stack
 	application -> db
@@ -151,4 +152,11 @@ digraph {
 	"canary-release" [label="Canary release"]
 	deploy -> "blue-green-deployment"
 	deploy -> "canary-release"
+	test [label=Test]
+	test -> "component-test"
+	test -> "contract-test"
+	test -> "end-to-end-test"
+	"component-test" [label="Component Test"]
+	"contract-test" [label="Contract Test"]
+	"end-to-end-test" [label="end-to-end Test"]
 }
