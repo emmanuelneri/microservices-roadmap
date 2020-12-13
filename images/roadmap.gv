@@ -120,10 +120,10 @@ digraph {
 	infrastructure -> "load-balance"
 	infrastructure -> "service-discovery"
 	infrastructure -> configuration
-	infrastructure -> "auto-scaling"
 	gateway -> "load-balance"
 	"load-balance" -> "service-discovery"
 	container [label=container]
+	"application-environment" -> scaling
 	"cloud-instance" [label="Cloud Instance"]
 	"on-premise" [label=OnPremise]
 	serveless [label=Serverless]
@@ -132,6 +132,8 @@ digraph {
 	"application-environment" -> "on-premise"
 	"application-environment" -> serveless
 	container -> orchestration
+	scaling -> "auto-scaling"
+	orchestration -> scaling
 	environment [label=Environments]
 	secrets [label=Secrets]
 	configuration -> environment

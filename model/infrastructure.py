@@ -17,12 +17,12 @@ class Infrastructure:
         dot.edge('infrastructure', 'load-balance')
         dot.edge('infrastructure', 'service-discovery')
         dot.edge('infrastructure', 'configuration')
-        dot.edge('infrastructure', 'auto-scaling')
 
         dot.edge('gateway', 'load-balance')
         dot.edge('load-balance', 'service-discovery')
 
         dot.node('container', 'container')
+        dot.edge('application-environment', 'scaling')
         dot.node('cloud-instance', 'Cloud Instance')
         dot.node('on-premise', 'OnPremise')
         dot.node('serveless', 'Serverless')
@@ -32,6 +32,9 @@ class Infrastructure:
         dot.edge('application-environment', 'serveless')
 
         dot.edge('container', 'orchestration')
+
+        dot.edge('scaling', 'auto-scaling')
+        dot.edge('orchestration', 'scaling')
 
         dot.node('environment', 'Environments')
         dot.node('secrets', 'Secrets')
